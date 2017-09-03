@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  moquette-1:
+    image: renarj/mqtt
+  moquette-2:
+    image: renarj/mqtt
+  haproxy-lb:
+    image: haproxy-lb
+    ports:
+       - "1883:1883"
+       - "8080:8080"
+    depends_on:
+       - moquette-1
+       - moquette-2
